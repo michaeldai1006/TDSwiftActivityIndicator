@@ -12,6 +12,7 @@
 		553553B521F064E0008A35B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 553553B321F064E0008A35B6 /* Main.storyboard */; };
 		553553B721F064E2008A35B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 553553B621F064E2008A35B6 /* Assets.xcassets */; };
 		553553BA21F064E2008A35B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 553553B821F064E2008A35B6 /* LaunchScreen.storyboard */; };
+		553553C321F065B9008A35B6 /* TDSwiftActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553553C221F065B9008A35B6 /* TDSwiftActivityIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		553553B621F064E2008A35B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		553553B921F064E2008A35B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		553553BB21F064E2008A35B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		553553C221F065B9008A35B6 /* TDSwiftActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDSwiftActivityIndicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,15 @@
 		553553AE21F064E0008A35B6 /* tdswiftactivityindicator_example */ = {
 			isa = PBXGroup;
 			children = (
+				553553C121F06580008A35B6 /* SampleApp */,
+				553553C221F065B9008A35B6 /* TDSwiftActivityIndicator.swift */,
+			);
+			path = tdswiftactivityindicator_example;
+			sourceTree = "<group>";
+		};
+		553553C121F06580008A35B6 /* SampleApp */ = {
+			isa = PBXGroup;
+			children = (
 				553553AF21F064E0008A35B6 /* AppDelegate.swift */,
 				553553B121F064E0008A35B6 /* ViewController.swift */,
 				553553B321F064E0008A35B6 /* Main.storyboard */,
@@ -61,7 +72,7 @@
 				553553B821F064E2008A35B6 /* LaunchScreen.storyboard */,
 				553553BB21F064E2008A35B6 /* Info.plist */,
 			);
-			path = tdswiftactivityindicator_example;
+			path = SampleApp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				553553B221F064E0008A35B6 /* ViewController.swift in Sources */,
+				553553C321F065B9008A35B6 /* TDSwiftActivityIndicator.swift in Sources */,
 				553553B021F064E0008A35B6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,7 +296,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E727FEDX2F;
-				INFOPLIST_FILE = tdswiftactivityindicator_example/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/tdswiftactivityindicator_example/SampleApp/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,7 +314,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E727FEDX2F;
-				INFOPLIST_FILE = tdswiftactivityindicator_example/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/tdswiftactivityindicator_example/SampleApp/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
