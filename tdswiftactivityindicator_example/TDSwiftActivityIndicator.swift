@@ -23,7 +23,6 @@ class TDSwiftActivityIndicator {
     }
     
     func dismiss() {
-        indicatorBackgroundView.manageUserInteractions(userInteractionEnabled: true)
         indicatorBackgroundView.removeFromSuperview()
         indicatorView.removeFromSuperview()
     }
@@ -31,8 +30,6 @@ class TDSwiftActivityIndicator {
     private func isViewControllerVisible(viewController: UIViewController) -> Bool {
         return viewController.isViewLoaded && viewController.view.window != nil
     }
-    
-
     
     class TDSwiftIndicatorView: UIView {
         init(width: CGFloat, color: UIColor) {
@@ -48,7 +45,6 @@ class TDSwiftActivityIndicator {
         }
         
         override func willMove(toWindow newWindow: UIWindow?) {
-            print("Will move to window!!!")
             startAnimation()
         }
         
@@ -75,12 +71,19 @@ class TDSwiftActivityIndicator {
         }
         
         override func willMove(toWindow newWindow: UIWindow?) {
-            manageUserInteractions(userInteractionEnabled: false)
+            super.willMove(toWindow: newWindow)
+            manageUserInteractions(userInteractionEnabled: newWindow == nil)
+        }
+        
+        deinit {
+            manageUserInteractions(userInteractionEnabled: true)
         }
         
         func manageUserInteractions(userInteractionEnabled enabled: Bool) {
             if enabled {
-                UIApplication.shared.endIgnoringInteractionEvents()
+                if UIApplication.shared.isIgnoringInteractionEvents {
+                    UIApplication.shared.endIgnoringInteractionEvents()
+                }
             } else {
                 UIApplication.shared.beginIgnoringInteractionEvents()
             }
