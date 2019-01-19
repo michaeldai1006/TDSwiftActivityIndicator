@@ -79,9 +79,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vRc-MG-w0s">
+                                <rect key="frame" x="62.5" y="538" width="250" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.58542870599999997" blue="0.50495953289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="0E5-Tg-Tns"/>
+                                    <constraint firstAttribute="height" constant="50" id="vAu-OI-ASm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <state key="normal" title="Present on VC1">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="presentOnVC1BtnClicked:" destination="hEo-7G-60I" eventType="touchUpInside" id="19O-v9-0cB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="BRx-Vg-j78" firstAttribute="bottom" secondItem="vRc-MG-w0s" secondAttribute="bottom" constant="30" id="P9M-re-CXg"/>
+                            <constraint firstItem="vRc-MG-w0s" firstAttribute="centerX" secondItem="SK0-24-aek" secondAttribute="centerX" id="nGN-O1-YK9"/>
                             <constraint firstItem="Bir-xJ-uAD" firstAttribute="centerY" secondItem="SK0-24-aek" secondAttribute="centerY" id="sJH-zK-aeR"/>
                             <constraint firstItem="Bir-xJ-uAD" firstAttribute="centerX" secondItem="SK0-24-aek" secondAttribute="centerX" id="tWm-kt-uJu"/>
                         </constraints>

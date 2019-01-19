@@ -2,69 +2,33 @@ import Foundation
 import UIKit
 
 class TDSwiftActivityIndicator {
-    var indicatorColor: UIColor
-    var backgroundWidth: CGFloat
-    var indicatorWidth: CGFloat
+    var indicatorView: TDSwiftIndicatorView
+    var indicatorBackgroundView: TDSwiftIndicatorBackgroundView
     
-    var presentedIndicatorBackgroundView: UIView?
-    var presentedIndicatorView: UIView?
-    
-    var indicatorBackgroundView: UIView {
-        let bgView = UIView()
-        bgView.frame = CGRect(x: 0, y: 0, width: backgroundWidth, height: backgroundWidth)
-        bgView.backgroundColor = UIColor(red:0.27, green:0.27, blue:0.27, alpha: 0.7)
-        bgView.clipsToBounds = true
-        bgView.layer.cornerRadius = 10
-        return bgView
-    }
-    
-    var indicatorView: UIView {
-        let indicatorView = UIView()
-        indicatorView.frame = CGRect(x: 0, y: 0, width: indicatorWidth, height: indicatorWidth)
-        indicatorView.backgroundColor = indicatorColor
-        indicatorView.alpha = 0.9
-        indicatorView.clipsToBounds = true
-        indicatorView.layer.cornerRadius = indicatorView.frame.size.width/2
-        return indicatorView
-    }
-    
-    init(indicatorColor: UIColor = .white, backgroundWidth: CGFloat = 80.0, indicatorWidth: CGFloat = 10.0) {
-        self.indicatorColor = indicatorColor
-        self.backgroundWidth = backgroundWidth
-        self.indicatorWidth = indicatorWidth
+    init(indicatorColor: UIColor = .white, indicatorWidth: CGFloat = 10.0, backgroundWidth: CGFloat = 80.0) {
+        self.indicatorView = TDSwiftIndicatorView(width: indicatorWidth, color: indicatorColor)
+        self.indicatorBackgroundView = TDSwiftIndicatorBackgroundView(width: backgroundWidth)
     }
     
     func present(onViewController viewController: UIViewController) {
         // Disable user interaction if vc is currently visible
-        if isViewControllerVisible(viewController: viewController) { manageUserInteractions(userInteractionEnabled: false) }
+//        if isViewControllerVisible(viewController: viewController) { manageUserInteractions(userInteractionEnabled: false) }
         
         // Background view
-        presentedIndicatorBackgroundView = self.indicatorBackgroundView
-        presentedIndicatorBackgroundView!.center = viewController.view.center
+        indicatorBackgroundView.center = viewController.view.center
         
         // Indicator view
-        presentedIndicatorView = self.indicatorView
-        presentedIndicatorView!.center = presentedIndicatorBackgroundView!.center
-        
-        // Animation
-        animatesIndicatorView(view: presentedIndicatorView!)
+        indicatorView.center = indicatorBackgroundView.center
         
         // Present
-        viewController.view.addSubview(presentedIndicatorBackgroundView!)
-        viewController.view.addSubview(presentedIndicatorView!)
+        viewController.view.addSubview(indicatorBackgroundView)
+        viewController.view.addSubview(indicatorView)
     }
     
-    func dismiss() {
-        if let presentedIndicatorBackgroundView = self.presentedIndicatorBackgroundView { presentedIndicatorBackgroundView.removeFromSuperview() }
-        if let presentedIndicatorView = self.presentedIndicatorView { presentedIndicatorView.removeFromSuperview() }
-    }
-    
-    private func animatesIndicatorView(view: UIView){
-        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 7, options: [.repeat, .curveEaseOut], animations: {
-            view.transform = .init(scaleX: 5, y: 5)
-            view.alpha = 0
-        }, completion: nil)
-    }
+//    func dismiss() {
+//        if let presentedIndicatorBackgroundView = self.presentedIndicatorBackgroundView { presentedIndicatorBackgroundView.removeFromSuperview() }
+//        if let presentedIndicatorView = self.presentedIndicatorView { presentedIndicatorView.removeFromSuperview() }
+//    }
     
     private func isViewControllerVisible(viewController: UIViewController) -> Bool {
         return viewController.isViewLoaded && viewController.view.window != nil
@@ -75,6 +39,47 @@ class TDSwiftActivityIndicator {
             UIApplication.shared.endIgnoringInteractionEvents()
         } else {
             UIApplication.shared.beginIgnoringInteractionEvents()
+        }
+    }
+    
+    class TDSwiftIndicatorView: UIView {
+        init(width: CGFloat, color: UIColor) {
+            super.init(frame: CGRect(x: 0, y: 0, width: width, height: width))
+            self.backgroundColor = color
+            self.alpha = 0.9
+            self.clipsToBounds = true
+            self.layer.cornerRadius = width/2
+        }
+        
+        required init?(coder aDecoder: NSCoder) {
+            fatalError("Init from coder is forbidden")
+        }
+        
+        override func willMove(toWindow newWindow: UIWindow?) {
+            print("Will move to window!!!")
+            startAnimation()
+        }
+        
+        private func startAnimation(){
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 7, options: [.repeat, .curveEaseOut], animations: {
+                    self.transform = .init(scaleX: 5, y: 5)
+                    self.alpha = 0
+                }, completion: nil)
+            }
+        }
+    }
+    
+    class TDSwiftIndicatorBackgroundView: UIView {
+        init(width: CGFloat) {
+            super.init(frame: CGRect(x: 0, y: 0, width: width, height: width))
+            self.backgroundColor = UIColor(red:0.27, green:0.27, blue:0.27, alpha: 0.7)
+            self.clipsToBounds = true
+            self.layer.cornerRadius = 10
+        }
+        
+        required init?(coder aDecoder: NSCoder) {
+            fatalError("Init from coder is forbidden")
         }
     }
 }
