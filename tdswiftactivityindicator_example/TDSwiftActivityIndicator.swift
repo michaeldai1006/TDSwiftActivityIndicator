@@ -11,9 +11,6 @@ class TDSwiftActivityIndicator {
     }
     
     func present(onViewController viewController: UIViewController) {
-        // Disable user interaction if vc is currently visible
-//        if isViewControllerVisible(viewController: viewController) { manageUserInteractions(userInteractionEnabled: false) }
-        
         // Background view
         indicatorBackgroundView.center = viewController.view.center
         
@@ -25,22 +22,17 @@ class TDSwiftActivityIndicator {
         viewController.view.addSubview(indicatorView)
     }
     
-//    func dismiss() {
-//        if let presentedIndicatorBackgroundView = self.presentedIndicatorBackgroundView { presentedIndicatorBackgroundView.removeFromSuperview() }
-//        if let presentedIndicatorView = self.presentedIndicatorView { presentedIndicatorView.removeFromSuperview() }
-//    }
+    func dismiss() {
+        indicatorBackgroundView.manageUserInteractions(userInteractionEnabled: true)
+        indicatorBackgroundView.removeFromSuperview()
+        indicatorView.removeFromSuperview()
+    }
     
     private func isViewControllerVisible(viewController: UIViewController) -> Bool {
         return viewController.isViewLoaded && viewController.view.window != nil
     }
     
-    private func manageUserInteractions(userInteractionEnabled enabled: Bool) {
-        if enabled {
-            UIApplication.shared.endIgnoringInteractionEvents()
-        } else {
-            UIApplication.shared.beginIgnoringInteractionEvents()
-        }
-    }
+
     
     class TDSwiftIndicatorView: UIView {
         init(width: CGFloat, color: UIColor) {
@@ -80,6 +72,18 @@ class TDSwiftActivityIndicator {
         
         required init?(coder aDecoder: NSCoder) {
             fatalError("Init from coder is forbidden")
+        }
+        
+        override func willMove(toWindow newWindow: UIWindow?) {
+            manageUserInteractions(userInteractionEnabled: false)
+        }
+        
+        func manageUserInteractions(userInteractionEnabled enabled: Bool) {
+            if enabled {
+                UIApplication.shared.endIgnoringInteractionEvents()
+            } else {
+                UIApplication.shared.beginIgnoringInteractionEvents()
+            }
         }
     }
 }
