@@ -13,6 +13,7 @@
 		553553B721F064E2008A35B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 553553B621F064E2008A35B6 /* Assets.xcassets */; };
 		553553BA21F064E2008A35B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 553553B821F064E2008A35B6 /* LaunchScreen.storyboard */; };
 		553553C321F065B9008A35B6 /* TDSwiftActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553553C221F065B9008A35B6 /* TDSwiftActivityIndicator.swift */; };
+		553553C521F32BBA008A35B6 /* ViewControllerTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553553C421F32BBA008A35B6 /* ViewControllerTwo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		553553B921F064E2008A35B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		553553BB21F064E2008A35B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		553553C221F065B9008A35B6 /* TDSwiftActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDSwiftActivityIndicator.swift; sourceTree = "<group>"; };
+		553553C421F32BBA008A35B6 /* ViewControllerTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTwo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 			children = (
 				553553AF21F064E0008A35B6 /* AppDelegate.swift */,
 				553553B121F064E0008A35B6 /* ViewControllerOne.swift */,
+				553553C421F32BBA008A35B6 /* ViewControllerTwo.swift */,
 				553553B321F064E0008A35B6 /* Main.storyboard */,
 				553553B621F064E2008A35B6 /* Assets.xcassets */,
 				553553B821F064E2008A35B6 /* LaunchScreen.storyboard */,
@@ -149,6 +152,7 @@
 				553553B221F064E0008A35B6 /* ViewControllerOne.swift in Sources */,
 				553553C321F065B9008A35B6 /* TDSwiftActivityIndicator.swift in Sources */,
 				553553B021F064E0008A35B6 /* AppDelegate.swift in Sources */,
+				553553C521F32BBA008A35B6 /* ViewControllerTwo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

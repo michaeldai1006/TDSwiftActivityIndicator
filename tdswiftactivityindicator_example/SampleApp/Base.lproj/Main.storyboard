@@ -30,7 +30,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="hEo-7G-60I" kind="show" id="41S-xn-A5h"/>
+                                    <segue destination="hEo-7G-60I" kind="show" identifier="ViewControllerTwo" id="41S-xn-A5h"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GUx-EC-3Gg">
@@ -60,10 +60,10 @@
             </objects>
             <point key="canvasLocation" x="2015.2" y="133.5832083958021"/>
         </scene>
-        <!--View Controller-->
+        <!--View Controller Two-->
         <scene sceneID="N7c-UA-Evk">
             <objects>
-                <viewController id="hEo-7G-60I" sceneMemberID="viewController">
+                <viewController id="hEo-7G-60I" customClass="ViewControllerTwo" customModule="tdswiftactivityindicator_example" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SK0-24-aek">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
