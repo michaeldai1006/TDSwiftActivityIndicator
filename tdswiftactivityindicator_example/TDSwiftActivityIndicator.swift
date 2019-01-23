@@ -4,10 +4,12 @@ import UIKit
 class TDSwiftActivityIndicator {
     var indicatorView: TDSwiftIndicatorView
     var indicatorBackgroundView: TDSwiftIndicatorBackgroundView
+    var isPresenting: Bool
     
     init(indicatorColor: UIColor = .white, indicatorWidth: CGFloat = 10.0, backgroundWidth: CGFloat = 80.0) {
         self.indicatorView = TDSwiftIndicatorView(width: indicatorWidth, color: indicatorColor)
         self.indicatorBackgroundView = TDSwiftIndicatorBackgroundView(width: backgroundWidth)
+        self.isPresenting = false
     }
     
     func present(onViewController viewController: UIViewController) {
@@ -20,11 +22,17 @@ class TDSwiftActivityIndicator {
         // Present
         viewController.view.addSubview(indicatorBackgroundView)
         viewController.view.addSubview(indicatorView)
+        
+        // Presenting state
+        self.isPresenting = true
     }
     
     func dismiss() {
         indicatorBackgroundView.removeFromSuperview()
         indicatorView.removeFromSuperview()
+        
+        // Presenting state
+        self.isPresenting = false
     }
     
     private func isViewControllerVisible(viewController: UIViewController) -> Bool {
